@@ -1,9 +1,56 @@
 ---
 import Main from "../layouts/main.astro";
+
+const pageTitle = 'About Me';
+
+const identity = {
+  firstName: "Daniel",
+  country: "Russia",
+  occupation: "Developer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = 'blue'
+const fontWeight = 'bold'
+const textCase = 'uppercase'
 ---
 
-<Main>
-	<h1>About me</h1>
-  <h2>My name is Daniel Mamedov</h2>
-  <p> I am a software engineer learning Astro</p>
+<Main title={pageTitle}>
+	<h1>{pageTitle}</h1>
+  <h2>My name is {identity.firstName}</h2>
+  <p>I live in {identity.country}</p>
+  <p>I am a {identity.occupation}</p>
+  {happy && <p>I am happy</p>}
+  {finished && <p>I have finished</p>}
+  {goal > 0 && <p>I have a goal</p>}
+  <ul>
+    {identity.hobbies.map((hobby) => <li class="hobby">{hobby}</li>)}
+  </ul>
+  <ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
 </Main>
+<style define:vars={{ skillColor, fontWeight, textCase }}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+
+  .hobby {
+    color: green;
+    font-size: 1.5rem;
+  }
+  
+  .skill {
+    color: var(--skillColor);
+    font-size: 2rem;
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+</style>
