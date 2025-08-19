@@ -3,13 +3,17 @@ import Main from "../layouts/main.astro";
 import BlogPost from "../components/blog.astro";
 import { getCollection } from "astro:content";
 
-const posts = await getCollection('blog')
+const posts = await getCollection("blog");
 
-const pageTitle = 'My Astro Learning Blog';
+const pageTitle = "My Astro Learning Blog";
 ---
 
 <Main title={pageTitle}>
   <ul>
-    {posts.map((post) => <BlogPost url={`/posts/${post.id}`} title={post.data.title} />)}
+    {
+      posts.map((post) => (
+        <BlogPost url={`/posts/${post.id}`} title={post.data.title} />
+      ))
+    }
   </ul>
 </Main>

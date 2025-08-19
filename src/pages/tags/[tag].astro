@@ -4,25 +4,30 @@ import Blog from "../../components/blog.astro";
 import Main from "../../layouts/main.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog')
-  const tags = [...new Set(posts.flatMap((post) => post.data.tags))]
+  const posts = await getCollection("blog");
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
 
-  return tags.map(tag => {
-    const filteredPosts = posts.filter((post) => post.data.tags.includes(tag))
+  return tags.map((tag) => {
+    const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
 
     return {
       params: { tag },
-      props: { posts: filteredPosts }
-    }
-  })
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
-const { tag } = Astro.params
-const { posts } = Astro.props
+const { tag } = Astro.params;
+const { posts } = Astro.props;
 ---
+
 <Main title={tag}>
   <p>Potss tagged with {tag}</p>
   <ul>
-    {posts.map((post) => <Blog url={`/posts/${post.id}`} title={post.data.title} />)}
+    {
+      posts.map((post) => (
+        <Blog url={`/posts/${post.id}`} title={post.data.title} />
+      ))
+    }
   </ul>
 </Main>

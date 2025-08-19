@@ -1,7 +1,7 @@
 ---
 import Footer from "../components/footer.astro";
 import Header from "../components/header.astro";
-import '../styles/global.css'
+import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -11,25 +11,25 @@ const { title } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
     <Header />
-		<h1>{title}</h1>
-		<slot />
-		<Footer />
-		<script>
-			import '../scripts/menu.ts'
-		</script>
-	</body>
+    <h1>{title}</h1>
+    <slot />
+    <Footer />
+    <script>
+      import "../scripts/menu.ts";
+    </script>
+  </body>
 </html>
 <style>
-	h1 {
+  h1 {
     color: purple;
     font-size: 4rem;
   }

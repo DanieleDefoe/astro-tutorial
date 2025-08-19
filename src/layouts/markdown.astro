@@ -1,20 +1,28 @@
 ---
-import Main from "./main.astro"
-const { frontmatter } = Astro.props
-
+import Main from "./main.astro";
+const { frontmatter } = Astro.props;
 ---
+
 <Main title={frontmatter.title}>
   <p>Written by {frontmatter.author}</p>
   <p>Published on {frontmatter.pubDate.toLocaleDateString()}</p>
   <p>{frontmatter.description}</p>
-  <img style="width: 100%;" src={frontmatter.image.url} alt={frontmatter.image.alt} />
+  <img
+    style="width: 100%;"
+    src={frontmatter.image.url}
+    alt={frontmatter.image.alt}
+  />
 
   <ul class="tags">
-    {frontmatter.tags.map((tag: string) => (
-      <li>
-        <a class="tag" href={`/tags/${tag}`}>{tag}</a>
-      </li>
-    ))}
+    {
+      frontmatter.tags.map((tag: string) => (
+        <li>
+          <a class="tag" href={`/tags/${tag}`}>
+            {tag}
+          </a>
+        </li>
+      ))
+    }
   </ul>
 
   <slot />
@@ -22,7 +30,7 @@ const { frontmatter } = Astro.props
 <style>
   a {
     display: block;
-    color: #00539F;
+    color: #00539f;
   }
 
   .tags {
@@ -35,9 +43,9 @@ const { frontmatter } = Astro.props
   .tag {
     margin: 0.25em;
     border: dotted 1px #a1a1a1;
-    border-radius: .5em;
-    padding: .5em 1em;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
     font-size: 1.15em;
-    background-color: #F8FCFD;
+    background-color: #f8fcfd;
   }
 </style>

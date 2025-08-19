@@ -1,29 +1,30 @@
 ---
-import Social from "./social.astro"
+import Social from "./social.astro";
 
 const links = [
   {
-    platform: 'github.com',
-    username: 'danieledefoe',
-    label: 'GitHub'
+    platform: "github.com",
+    username: "danieledefoe",
+    label: "GitHub",
   },
   {
-    platform: 't.me',
-    username: 'nathanielyork',
-    label: 'Telegram'
-  }
-]
+    platform: "t.me",
+    username: "nathanielyork",
+    label: "Telegram",
+  },
+];
 ---
+
 <footer>
-  <p>
-    Learn more about me on
-  </p>
+  <p>Learn more about me on</p>
   <ul class="social-links">
-    {links.map((link) => (
-      <li>
-        <Social {...link} />
-      </li>
-    ))}
+    {
+      links.map((link) => (
+        <li>
+          <Social {...link} />
+        </li>
+      ))
+    }
   </ul>
 </footer>
 
