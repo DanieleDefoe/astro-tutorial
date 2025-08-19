@@ -1,9 +1,12 @@
 ---
+import Greeting from "../components/greeting";
 import Main from "../layouts/main.astro";
 
 const pageTitle = 'Home Page'
+const messages = ['Hello', 'Hi', 'Hey', 'Howdy', 'Greetings', 'Welcome']
 ---
 
 <Main title={pageTitle}>
-  <p>This is a simple Astro site.</p>
+  <h2>This is a simple Astro site.</h2>
+  <Greeting client:load messages={messages} />
 </Main>
