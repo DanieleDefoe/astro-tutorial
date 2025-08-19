@@ -1,15 +1,14 @@
 ---
 import Main from "../layouts/main.astro";
+import BlogPost from "../components/blog.astro";
+
+const posts = Object.values(import.meta.glob('./posts/*.md', { eager: true }))
 
 const pageTitle = 'My Astro Learning Blog';
 ---
 
 <Main title={pageTitle}>
   <ul>
-    <li>
-      <a href="/posts/post-1">My First Blog Post</a>
-      <a href="/posts/post-2">My Second Blog Post</a>
-      <a href="/posts/post-3">My Third Blog Post</a>
-    </li>
+    {posts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
   </ul>
-</Main> 
+</Main>
