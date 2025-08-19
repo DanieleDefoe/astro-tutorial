@@ -22,7 +22,6 @@ const textCase = 'uppercase'
 ---
 
 <Main title={pageTitle}>
-	<h1>{pageTitle}</h1>
   <h2>My name is {identity.firstName}</h2>
   <p>I live in {identity.country}</p>
   <p>I am a {identity.occupation}</p>
@@ -36,12 +35,7 @@ const textCase = 'uppercase'
     {skills.map((skill) => <li class="skill">{skill}</li>)}
   </ul>
 </Main>
-<style define:vars={{ skillColor, fontWeight, textCase }}>
-  h1 {
-    color: purple;
-    font-size: 4rem;
-  }
-
+<style is:global define:vars={{ skillColor, fontWeight, textCase }}>
   .hobby {
     color: green;
     font-size: 1.5rem;
