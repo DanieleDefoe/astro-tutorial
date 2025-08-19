@@ -18,7 +18,7 @@ const links = [
   <p>
     Learn more about me on
   </p>
-  <ul>
+  <ul class="social-links">
     {links.map((link) => (
       <li>
         <Social {...link} />
@@ -33,5 +33,11 @@ const links = [
     flex-direction: column;
     gap: 1rem;
     margin-top: 2rem;
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 </style>

@@ -1,12 +1,43 @@
 ---
 import Main from "./main.astro"
 const { frontmatter } = Astro.props
+
 ---
 <Main title={frontmatter.title}>
   <p>Written by {frontmatter.author}</p>
   <p>Published on {new Date(frontmatter.pubDate).toLocaleDateString()}</p>
   <p>{frontmatter.description}</p>
   <img style="width: 100%;" src={frontmatter.image.url} alt={frontmatter.image.alt} />
-  <p>Tags: {frontmatter.tags.join(', ')}</p>
+
+  <ul class="tags">
+    {frontmatter.tags.map((tag: string) => (
+      <li>
+        <a class="tag" href={`/tags/${tag}`}>{tag}</a>
+      </li>
+    ))}
+  </ul>
+
   <slot />
 </Main>
+<style>
+  a {
+    display: block;
+    color: #00539F;
+  }
+
+  .tags {
+    gap: 10px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+</style>

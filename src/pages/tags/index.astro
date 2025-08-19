@@ -1,0 +1,53 @@
+---
+import type { MarkdownInstance } from "astro";
+import Main from "../../layouts/main.astro";
+
+type Post = MarkdownInstance<{
+    title: string
+    pubDate: string
+    description: string
+    tags: string[]
+  }>
+
+interface Props {
+  posts: Post[]
+}
+
+const pageTitle = 'Tags'
+
+const posts = Object.values(import.meta.glob<Post>('../posts/*.md', { eager: true }))
+const tags = [...new Set(posts.flatMap(post => post.frontmatter.tags))]
+---
+
+<Main title={pageTitle}>
+  <ul class="tags">
+    {tags.map(tag => (
+      <li>
+        <a class="tag" href={`/tags/${tag}`}>{tag}</a>
+      </li>
+    ))}
+  </ul>
+</Main>
+
+<style>
+  a {
+    display: block;
+    color: #00539F;
+  }
+
+  .tags {
+    gap: 10px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+</style>
