@@ -1,21 +1,11 @@
 ---
-interface Props {
-  platform: string;
-  username: string;
-  label: string;
-}
-
 const { platform, username, label } = Astro.props;
 ---
 
-<a target="_blank" href={`https://${platform}/${username}`}>{label}</a>
-
-<style>
-  a {
-    padding: 0.5rem 1rem;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 0.5rem;
-    background-color: #4c1d95;
-  }
-</style>
+<a
+  target="_blank"
+  href={`https://${platform}/${username}`}
+  class="rounded-md bg-purple-600 px-4 py-2 text-white"
+>
+  {label}
+</a>

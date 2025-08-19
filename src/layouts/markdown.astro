@@ -1,5 +1,4 @@
 ---
-import type { getCollection } from "astro:content";
 import Main from "./main.astro";
 
 const { post } = Astro.props;
@@ -11,11 +10,14 @@ const { post } = Astro.props;
   <p>{post.description}</p>
   <img style="width: 100%;" src={post.image.url} alt={post.image.alt} />
 
-  <ul class="tags">
+  <ul class="flex flex-wrap gap-2">
     {
-      post.tags.map((tag: string) => (
+      post.tags.map((tag) => (
         <li>
-          <a class="tag" href={`/tags/${tag}`}>
+          <a
+            class="block rounded-md border border-gray-300 px-2 py-1"
+            href={`/tags/${tag}`}
+          >
             {tag}
           </a>
         </li>
@@ -25,25 +27,3 @@ const { post } = Astro.props;
 
   <slot />
 </Main>
-<style>
-  a {
-    display: block;
-    color: #00539f;
-  }
-
-  .tags {
-    gap: 10px;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
-  }
-</style>

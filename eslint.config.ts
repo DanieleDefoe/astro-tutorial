@@ -3,6 +3,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 import prettierConfig from "eslint-config-prettier";
+import astroConfig from "eslint-plugin-astro";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
@@ -14,5 +15,6 @@ export default defineConfig([
   },
   tseslint.configs.strictTypeChecked,
   pluginReact.configs.flat.recommended,
+  ...astroConfig.configs.recommended,
   prettierConfig,
 ]);
