@@ -14,7 +14,7 @@ export default defineConfig([
     languageOptions: { globals: globals.browser },
   },
   tseslint.configs.strictTypeChecked,
-  pluginReact.configs.flat.recommended,
+  pluginReact.configs.flat.recommended!,
   ...astroConfig.configs.recommended,
   prettierConfig,
 ]);

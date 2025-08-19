@@ -1,5 +1,11 @@
 ---
-const { platform, username, label } = Astro.props;
+interface Props {
+  platform: string;
+  username: string;
+  label: string;
+}
+
+const { platform, username, label }: Props = Astro.props;
 ---
 
 <a

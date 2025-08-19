@@ -1,5 +1,10 @@
 ---
 import Main from "./main.astro";
+import type { Post } from "@/content.config";
+
+interface Props {
+  post: Post;
+}
 
 const { post } = Astro.props;
 ---
