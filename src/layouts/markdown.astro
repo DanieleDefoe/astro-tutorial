@@ -1,21 +1,19 @@
 ---
+import type { getCollection } from "astro:content";
 import Main from "./main.astro";
-const { frontmatter } = Astro.props;
+
+const { post } = Astro.props;
 ---
 
-<Main title={frontmatter.title}>
-  <p>Written by {frontmatter.author}</p>
-  <p>Published on {frontmatter.pubDate.toLocaleDateString()}</p>
-  <p>{frontmatter.description}</p>
-  <img
-    style="width: 100%;"
-    src={frontmatter.image.url}
-    alt={frontmatter.image.alt}
-  />
+<Main title={post.title}>
+  <p>Written by {post.author}</p>
+  <p>Published on {post.pubDate.toLocaleDateString()}</p>
+  <p>{post.description}</p>
+  <img style="width: 100%;" src={post.image.url} alt={post.image.alt} />
 
   <ul class="tags">
     {
-      frontmatter.tags.map((tag: string) => (
+      post.tags.map((tag: string) => (
         <li>
           <a class="tag" href={`/tags/${tag}`}>
             {tag}
