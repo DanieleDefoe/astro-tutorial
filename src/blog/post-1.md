@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/markdown.astro
 title: "My First Blog Post"
 author: "Daniel"
 description: "This is the first for of my new Astro blog."

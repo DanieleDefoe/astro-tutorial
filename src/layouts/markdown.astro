@@ -5,7 +5,7 @@ const { frontmatter } = Astro.props
 ---
 <Main title={frontmatter.title}>
   <p>Written by {frontmatter.author}</p>
-  <p>Published on {new Date(frontmatter.pubDate).toLocaleDateString()}</p>
+  <p>Published on {frontmatter.pubDate.toLocaleDateString()}</p>
   <p>{frontmatter.description}</p>
   <img style="width: 100%;" src={frontmatter.image.url} alt={frontmatter.image.alt} />
 
