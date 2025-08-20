@@ -1,9 +1,14 @@
 ---
 import Greeting from "@/components/greeting";
 import Main from "@/layouts/main.astro";
+import { PUBLIC_API_URL } from "astro:env/client";
+import { getSecret } from "astro:env/server";
 
 const pageTitle = "Home Page";
 const messages = ["Hello", "Hi", "Hey", "Howdy", "Greetings", "Welcome"];
+
+console.log(PUBLIC_API_URL);
+console.log(getSecret("SECRET"));
 ---
 
 <Main title={pageTitle}>
