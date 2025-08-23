@@ -2,10 +2,17 @@
 import Main from "@/layouts/main.astro";
 
 const pageTitle = "500";
+
+interface Props {
+  error: unknown;
+}
+
+const { error } = Astro.props;
 ---
 
 <Main title={pageTitle}>
   <h1>500 Internal Server Error</h1>
+  <h2>{error instanceof Error ? error.message : "Unknown error"}</h2>
   <p>The server encountered an error while processing your request.</p>
   <a href="/">Go to Home</a>
 </Main>
