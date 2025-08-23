@@ -1,0 +1,7 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const aboutUrl = getRelativeLocaleUrl("ru", "about");
+---
+
+<a href={aboutUrl}>About</a>
