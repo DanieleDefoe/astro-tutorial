@@ -1,0 +1,20 @@
+---
+import Main from "@/layouts/main.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const authors = await getCollection("authors");
+
+  return authors.map((author) => ({
+    params: { author: author.data.slug },
+    props: { author: author.data.name },
+  })) satisfies ReturnType<GetStaticPaths>;
+}
+
+const { author } = Astro.props;
+---
+
+<Main title={`Author: ${author}`}>
+  <p>Author: {author}</p>
+</Main>

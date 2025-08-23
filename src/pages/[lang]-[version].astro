@@ -1,0 +1,28 @@
+---
+import Main from "@/layouts/main.astro";
+import type { GetStaticPaths } from "astro";
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { lang: "en", version: "1.0" },
+    },
+    {
+      params: { lang: "en", version: "2.0" },
+    },
+    {
+      params: {
+        lang: "es",
+        version: decodeURI("%5Bpage%5D"),
+      },
+    },
+  ] satisfies ReturnType<GetStaticPaths>;
+}
+
+const { lang, version } = Astro.params;
+---
+
+<Main title={`${lang} ${version}`}>
+  <p>Lang: {lang}</p>
+  <p>Version: {version}</p>
+</Main>

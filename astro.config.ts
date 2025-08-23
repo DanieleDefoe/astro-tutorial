@@ -18,6 +18,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()] as any,
   },
+  redirects: {
+    "/about": "/blog",
+  },
   env: {
     validateSecrets: true,
     schema: {
