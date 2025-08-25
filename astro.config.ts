@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 import preact from "@astrojs/preact";
 
-import node from "@astrojs/node";
+// import node from "@astrojs/node";
 
 const { SECRET } = loadEnv(
   process.env.NODE_ENV ?? "development",
@@ -17,7 +17,7 @@ console.log(SECRET);
 export default defineConfig({
   site: "https://astro-tutorial-wheat-nine.vercel.app",
   integrations: [preact()],
-  output: "server",
+  // output: "server",
 
   vite: {
     plugins: [tailwindcss()] as any[],
@@ -25,6 +25,11 @@ export default defineConfig({
 
   redirects: {
     "/about": "/blog",
+  },
+
+  prefetch: {
+    defaultStrategy: "viewport",
+    prefetchAll: true,
   },
 
   env: {
@@ -40,29 +45,29 @@ export default defineConfig({
     },
   },
 
-  i18n: {
-    locales: [
-      "en",
-      "ru",
-      {
-        path: "fr",
-        codes: ["fr", "fr-BR", "fr-CA"],
-      },
-    ],
-    defaultLocale: "en",
-    routing: {
-      prefixDefaultLocale: false,
-      redirectToDefaultLocale: true,
-    },
-    fallback: {
-      ru: "en",
-    },
-    domains: {
-      ru: "astro-tutorial-wheat-nine.vercel.app",
-    },
-  },
+  // i18n: {
+  //   locales: [
+  //     "en",
+  //     "ru",
+  //     {
+  //       path: "fr",
+  //       codes: ["fr", "fr-BR", "fr-CA"],
+  //     },
+  //   ],
+  //   defaultLocale: "en",
+  //   routing: {
+  //     prefixDefaultLocale: false,
+  //     redirectToDefaultLocale: true,
+  //   },
+  //   fallback: {
+  //     ru: "en",
+  //   },
+  //   domains: {
+  //     ru: "https://astro-tutorial-wheat-nine.vercel.app",
+  //   },
+  // },
 
-  adapter: node({
-    mode: "standalone",
-  }),
+  // adapter: node({
+  //   mode: "standalone",
+  // }),
 });

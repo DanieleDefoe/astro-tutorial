@@ -1,5 +1,5 @@
 import { defineMiddleware, sequence } from "astro:middleware";
-import { middleware, redirectToDefaultLocale } from "astro:i18n";
+// import { middleware, redirectToDefaultLocale } from "astro:i18n";
 
 const validation = defineMiddleware(async (_, next) => {
   console.log("validation request");
@@ -15,7 +15,7 @@ const auth = defineMiddleware(async (_, next) => {
   return response;
 });
 
-const greeting = defineMiddleware(async (context, next) => {
+const greeting = defineMiddleware(async (_, next) => {
   // if (Math.random() > 0.5) {
   //   return next(
   //     new Request("/blog", {
@@ -38,9 +38,9 @@ export const onRequest = sequence(
   validation,
   auth,
   greeting,
-  middleware({
-    prefixDefaultLocale: true,
-    redirectToDefaultLocale: true,
-    fallbackType: "rewrite",
-  }),
+  // middleware({
+  //   prefixDefaultLocale: true,
+  //   redirectToDefaultLocale: true,
+  //   fallbackType: "rewrite",
+  // }),
 );

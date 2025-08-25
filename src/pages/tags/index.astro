@@ -24,3 +24,13 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
     }
   </ul>
 </Main>
+
+<script>
+  import { prefetch } from "astro:prefetch";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    prefetch("/about", {
+      ignoreSlowConnection: true,
+    });
+  });
+</script>
