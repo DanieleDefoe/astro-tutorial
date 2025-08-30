@@ -1,7 +1,9 @@
 ---
 import Component from "@/Component.astro";
 import Greeting from "@/components/greeting";
+import Video from "@/components/Video.astro";
 import Main from "@/layouts/main.astro";
+
 import { PUBLIC_API_URL } from "astro:env/client";
 // import { getSecret } from "astro:env/server";
 
@@ -15,6 +17,13 @@ console.log(PUBLIC_API_URL);
 <Main title={pageTitle}>
   <h3>PRIVATE INFO</h3>
   <Component />
-  <h2>This is a simple Astro site.</h2>
-  <Greeting client:load messages={messages} />
+  <h2 transition:name="title">This is a simple Astro site.</h2>
+  <Greeting
+    transition:persist="greeting"
+    transition:persist-props
+    transition:animate="slide"
+    client:load
+    messages={messages}
+  />
+  <Video />
 </Main>

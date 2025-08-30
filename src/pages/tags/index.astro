@@ -1,4 +1,6 @@
 ---
+import Greeting from "@/components/greeting";
+import Video from "@/components/Video.astro";
 import Main from "@/layouts/main.astro";
 import { getCollection } from "astro:content";
 
@@ -6,6 +8,7 @@ const pageTitle = "Tags";
 
 const posts = await getCollection("blog");
 const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+const messages = ["Hello", "Hi", "Hey", "Howdy", "Greetings", "Welcome"];
 ---
 
 <Main title={pageTitle}>
@@ -23,14 +26,26 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
       ))
     }
   </ul>
+
+  <Greeting transition:animate="slide" client:load messages={messages} />
+
+  <Video />
 </Main>
 
-<script>
+<script is:inline data-astro-rerun>
   import { prefetch } from "astro:prefetch";
 
   document.addEventListener("DOMContentLoaded", () => {
     prefetch("/about", {
       ignoreSlowConnection: true,
     });
+  });
+
+  document.addEventListener("astro:before-preparation", (e) => {
+    const originalLoader = e.loader;
+
+    e.loader = async function () {
+      await originalLoader();
+    };
   });
 </script>

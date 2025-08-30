@@ -8,5 +8,5 @@ const { url, title } = Astro.props;
 ---
 
 <li>
-  <a href={url}>{title}</a>
+  <a data-astro-reload data-astro-history="replace" href={url}>{title}</a>
 </li>

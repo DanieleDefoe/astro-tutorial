@@ -6,6 +6,6 @@ import Theme from "./theme.astro";
 
 <header>
   <Menu />
-  <Theme />
+  <Theme transition:persist="theme" transition:persist-props />
   <Navbar />
 </header>
