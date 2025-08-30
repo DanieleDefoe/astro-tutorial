@@ -2,6 +2,8 @@
 import Component from "@/Component.astro";
 import Greeting from "@/components/greeting";
 import Video from "@/components/Video.astro";
+import Wrapper from "@/components/Wrapper.astro";
+import CustomTable from "@/components/CustomTable.astro";
 import Main from "@/layouts/main.astro";
 
 import { PUBLIC_API_URL } from "astro:env/client";
@@ -26,4 +28,22 @@ console.log(PUBLIC_API_URL);
     messages={messages}
   />
   <Video />
+
+  <Wrapper>
+    <h1 slot="header">Main Content</h1>
+    <h2>Content</h2>
+    <h3 slot="footer">Footer Content</h3>
+  </Wrapper>
+
+  <CustomTable>
+    <Fragment slot="header">
+      <tr> </tr>
+      <tr> </tr>
+    </Fragment>
+
+    <Fragment slot="body">
+      <tr> </tr>
+      <tr> </tr>
+    </Fragment>
+  </CustomTable>
 </Main>
