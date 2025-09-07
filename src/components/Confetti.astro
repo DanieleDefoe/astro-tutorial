@@ -1,0 +1,15 @@
+<button data-confetti-button>Confetti</button>
+
+<script>
+  import confetti from "canvas-confetti";
+
+  const button = document.querySelector("[data-confetti-button]");
+
+  button?.addEventListener("click", () => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+    });
+  });
+</script>

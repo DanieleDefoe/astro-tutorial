@@ -11,6 +11,9 @@ import "@fontsource/twinkle-star";
 import twinkleStar from "@fontsource/twinkle-star/files/twinkle-star-latin-400-normal.woff2?url";
 import { Code } from "astro:components";
 import { Prism } from "@astrojs/prism";
+import Confetti from "@/components/Confetti.astro";
+import AstroHeart from "@/components/AstroHeart.astro";
+import AstroGreet from "@/components/AstroGreet.astro";
 
 // import { slide } from "astro:transitions";
 
@@ -69,6 +72,12 @@ const cssVar = "rgba(255 255 255 / 0.5)";
 
     <Code code="const foo = 'bar';" lang="js" theme="rose-pine-dawn" wrap />
     <Prism lang="js" code="const foo = 'bar';" />
+
+    <Confetti />
+
+    <AstroHeart />
+
+    <AstroGreet message="Hello, guys!" />
 
     <script>
       import "../scripts/menu.ts";

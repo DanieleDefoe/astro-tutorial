@@ -1,0 +1,22 @@
+---
+const { message = "Hello, World!" } = Astro.props;
+---
+
+<astro-greet data-message={message}>
+  <button>Say hi!</button>
+</astro-greet>
+
+<script>
+  class AstroGreet extends HTMLElement {
+    connectedCallback() {
+      const message = this.dataset.message;
+      const button = this.querySelector("button");
+
+      button?.addEventListener("click", () => {
+        alert(message);
+      });
+    }
+  }
+
+  customElements.define("astro-greet", AstroGreet);
+</script>
