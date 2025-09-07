@@ -2,11 +2,15 @@
 import Footer from "@/components/footer.astro";
 import Head from "@/components/head.astro";
 import Header from "@/components/header.astro";
-import "@/styles/global.css";
+import "@/styles/global.css?raw";
 import type {
   TransitionAnimationPair,
   TransitionDirectionalAnimations,
 } from "astro";
+import "@fontsource/twinkle-star";
+import twinkleStar from "@fontsource/twinkle-star/files/twinkle-star-latin-400-normal.woff2?url";
+import { Code } from "astro:components";
+import { Prism } from "@astrojs/prism";
 
 // import { slide } from "astro:transitions";
 
@@ -35,6 +39,8 @@ const customTransition = {
   backwards: anim,
 } satisfies TransitionDirectionalAnimations;
 
+const cssVar = "rgba(255 255 255 / 0.5)";
+
 // transition:animate={slide({ duration: "1.z5s" })}
 ---
 
@@ -42,12 +48,28 @@ const customTransition = {
   <head>
     <Head />
     <title>{title}</title>
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={twinkleStar}
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <Header />
     <h1 class="text-4xl text-purple-600">{title}</h1>
+    <h2
+      class:list={["text-2xl", "text-green-600", { "text-red-600": !!title }]}
+    >
+      subtitle
+    </h2>
     <slot />
     <Footer />
+
+    <Code code="const foo = 'bar';" lang="js" theme="rose-pine-dawn" wrap />
+    <Prism lang="js" code="const foo = 'bar';" />
+
     <script>
       import "../scripts/menu.ts";
 
@@ -59,6 +81,10 @@ const customTransition = {
 </html>
 
 <style is:global>
+  body {
+    font-family: "Twinkle Star", cursive;
+  }
+
   @keyframes bump {
     0% {
       opacity: 0;
@@ -74,5 +100,11 @@ const customTransition = {
       opacity: 1;
       transform: scale(1) translateX(0);
     }
+  }
+</style>
+
+<style define:vars={{ cssVar }}>
+  * :global(h1) {
+    color: var(--cssVar);
   }
 </style>

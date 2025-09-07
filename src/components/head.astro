@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import { Font } from "astro:assets";
 ---
 
 <meta charset="utf-8" />
@@ -7,4 +8,5 @@ import { ClientRouter } from "astro:transitions";
 <meta name="generator" content={Astro.generator} />
 <slot name="head" />
 
+<Font cssVariable="--font-inter" preload />
 <ClientRouter fallback="animate" />

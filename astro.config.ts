@@ -1,5 +1,5 @@
 import { loadEnv } from "vite";
-import { defineConfig, envField } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
 import preact from "@astrojs/preact";
@@ -19,8 +19,45 @@ export default defineConfig({
   integrations: [preact()],
   // output: "server",
 
+  build: {
+    inlineStylesheets: "never",
+  },
+
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: "github-light",
+        dark: "github-dark",
+      },
+    },
+    syntaxHighlight: "prism",
+    gfm: true,
+  },
+
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.google(),
+        name: "Inter",
+        cssVariable: "--font-inter",
+        weights: [400, 500, 600],
+        styles: ["normal"],
+        subsets: ["cyrillic"],
+        fallbacks: ["sans-serif"],
+      },
+    ],
+  },
+
+  scopedStyleStrategy: "class",
+
   vite: {
     plugins: [tailwindcss()] as any[],
+    ssr: {
+      noExternal: ["package"],
+    },
+    css: {
+      transformer: "lightningcss",
+    },
   },
 
   redirects: {
